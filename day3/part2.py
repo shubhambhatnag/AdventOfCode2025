@@ -10,17 +10,15 @@ for bank in file.readlines():
     batteries = []
 
     last = 0
+
     while len(batteries) < 12:
         subset = bank[last : (len(bank) - (12 - len(batteries) - 1))]
 
-        largest_idx = None
+        largest_idx = 0
 
         for i in range(len(subset)):
-            if largest_idx is None:
+            if subset[i] > subset[largest_idx]:
                 largest_idx = i
-            else:
-                if subset[i] > subset[largest_idx]:
-                    largest_idx = i
 
         batteries.append(subset[largest_idx])
 
