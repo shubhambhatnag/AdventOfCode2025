@@ -16,7 +16,7 @@ while changed:
             if grid[row][col] == "@":
                 count = 0
 
-                for diffs in [
+                for row_diff, col_diff in [
                     (-1, -1),
                     (-1, 0),
                     (-1, 1),
@@ -26,11 +26,11 @@ while changed:
                     (1, 0),
                     (1, -1),
                 ]:
-                    row_diff = row + diffs[0]
-                    col_diff = col + diffs[1]
+                    new_row = row + row_diff
+                    new_col = col + col_diff
 
-                    if 0 <= row_diff < len(grid) and 0 <= col_diff < len(grid[0]):
-                        if grid[row_diff][col_diff] == "@":
+                    if 0 <= new_row < len(grid) and 0 <= new_col < len(grid[0]):
+                        if grid[new_row][new_col] == "@":
                             count += 1
 
                 if count < 4:
