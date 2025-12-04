@@ -9,6 +9,7 @@ for line in file.readlines():
 changed = True
 
 while changed:
+    changed = False
     to_remove = []
     for row in range(len(grid)):
         for col in range(len(grid[0])):
@@ -16,14 +17,14 @@ while changed:
                 count = 0
 
                 for diffs in [
-                    [-1, -1],
-                    [-1, 0],
-                    [-1, 1],
-                    [0, -1],
-                    [0, 1],
-                    [1, 1],
-                    [1, 0],
-                    [1, -1],
+                    (-1, -1),
+                    (-1, 0),
+                    (-1, 1),
+                    (0, -1),
+                    (0, 1),
+                    (1, 1),
+                    (1, 0),
+                    (1, -1),
                 ]:
                     row_diff = row + diffs[0]
                     col_diff = col + diffs[1]
@@ -34,14 +35,8 @@ while changed:
 
                 if count < 4:
                     total += 1
-
-                    to_remove.append((row, col))
-
-    if to_remove == []:
-        changed = False
-    else:
-        for row, col in to_remove:
-            grid[row][col] = "."
+                    grid[row][col] = "."
+                    changed = True
 
 
 print(total)
