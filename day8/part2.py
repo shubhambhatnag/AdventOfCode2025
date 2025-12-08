@@ -38,6 +38,6 @@ for distance in distances:
 
         circuits.append(circuit1.union(circuit2).union(set([distance[1], distance[2]])))
 
-    if len(circuits) == 1 and len(circuits[0]) == len(boxes):
+    if len(circuits[0]) == len(boxes):
         print(distance[1][0] * distance[2][0])
         break
