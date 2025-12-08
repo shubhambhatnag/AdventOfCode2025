@@ -1,5 +1,4 @@
 import math
-from collections import defaultdict
 from itertools import combinations
 
 file = open("input.txt", "r")
