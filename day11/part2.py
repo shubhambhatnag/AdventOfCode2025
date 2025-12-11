@@ -1,5 +1,4 @@
 from functools import lru_cache
-from tokenize import Triple
 
 file = open("input.txt", "r")
 
@@ -9,25 +8,14 @@ for line in file.readlines():
     line = line.strip().split(": ")
     graph[line[0]] = line[1].split()
 
-stack = [("svr", tuple())]
-
-REQ1 = "fft"
-REQ2 = "dac"
-
 
 @lru_cache(None)
-def count_paths(node, fft, dac):
+def count_paths(node, end):
+    if node == end:
+        return 1
     if node == "out":
-        if fft and dac:
-            return 1
-        else:
-            return 0
-
-    if node == "fft":
-        fft = True
-    if node == "dac":
-        dac = True
-    return sum(count_paths(n, fft, dac) for n in graph[node])
+        return 0
+    return sum(count_paths(n, end) for n in graph[node])
 
 
-print(count_paths("svr", False, False))
+print(count_paths("svr", "fft") * count_paths("fft", "dac") * count_paths("dac", "out"))
