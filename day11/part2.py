@@ -18,4 +18,4 @@ def count_paths(node, end):
     return sum(count_paths(n, end) for n in graph[node])
 
 
-print(count_paths("fft", "dac"))
+print(count_paths("svr", "fft") * count_paths("fft", "dac") * count_paths("dac", "out"))
