@@ -9,13 +9,8 @@ for line in file.readlines():
 stack = [("you", tuple())]
 
 paths = []
-visited = set()
 while stack:
     curr, path = stack.pop()
-
-    if path in visited:
-        continue
-
     for neighbor in graph[curr]:
         current_path = list(path)
         if neighbor == "out":
