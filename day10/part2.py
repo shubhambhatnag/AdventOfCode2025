@@ -1,4 +1,4 @@
-from z3 import Int, Optimize, Sum, sat
+from z3 import Int, Optimize, Sum, sat  # type: ignore
 
 file = open("input.txt", "r")
 
