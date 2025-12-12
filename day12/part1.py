@@ -1,11 +1,6 @@
 file = open("input.txt", "r")
-
-
-shapes = []
-
-curr = []
-
 fits = 0
+
 for line in file.readlines():
     if "x" in line:
         line = line.strip().split(": ")
