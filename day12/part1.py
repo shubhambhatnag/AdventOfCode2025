@@ -13,11 +13,7 @@ for line in file.readlines():
         dimensions = [int(x) for x in line[0].split("x")]
         needed = [int(x) for x in line[1].split()]
 
-        total = sum(needed)
-
-        boxes = (dimensions[0] // 3) * (dimensions[1] // 3)
-
-        if boxes >= total:
+        if (dimensions[0] * dimensions[1]) // 9 >= sum(needed):
             fits += 1
 
 print(fits)
